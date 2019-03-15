@@ -1,0 +1,10 @@
+// 适配主流设备（媒体查询）
+// 通过序号去取数组的值
+.adapterMixin(@index) when (@index > 0) {
+  @media (min-width: extract(@adapterDeviceList, @index)) {
+    html {
+      font-size: @baseFontSize / @psdWidth * extract(@adapterDeviceList, @index);
+    }
+  }
+  .adapterMixin(@index - 1);
+}
